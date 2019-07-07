@@ -45,6 +45,12 @@ node{
 			server.download(downloadSpec)
 
     }
+    
+    
+    stage("Image Prune"){
+        sh "docker image prune -f"
+        sh "docker stop spring-redis"
+    }
     stage('docker image build')
     {
  sh "docker build -t spring-redis-image ."
