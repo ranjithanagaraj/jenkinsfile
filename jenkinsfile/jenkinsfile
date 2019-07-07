@@ -47,6 +47,7 @@ node{
     }
     stage('docker image build')
     {
+    sh 'docker build -t spring-redis-image .'
     sh 'docker-compose up'
     }
 
