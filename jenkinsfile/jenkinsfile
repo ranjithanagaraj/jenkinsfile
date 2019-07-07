@@ -47,8 +47,11 @@ node{
     }
     stage('docker image build')
     {
-    sh 'docker build -t spring-redis-image .'
-    sh 'docker-compose up'
+ sh "docker build -t spring-redis-image ."
+ sh "docker pull redis"
+    echo "Image build complete"
+  sh "docker run -p 8086:8086 --name spring-redis --link redis -d spring-redis-image"
+   echo "container is up"
     }
 
 }
