@@ -45,5 +45,9 @@ node{
 			server.download(downloadSpec)
 
     }
+    stage('docker image build')
+    {
+    sh 'docker build -t spring-redis-image .
+    }
 
 }
