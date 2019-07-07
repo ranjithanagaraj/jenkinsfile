@@ -47,9 +47,9 @@ node{
     }
     
     
-    stage("Image Prune"){
-        sh "docker image prune -f"
+    stage("Container Prune"){
         sh "docker stop spring-redis redis"
+	sh "docker container prune -f"
     }
     stage('docker image build')
     {
