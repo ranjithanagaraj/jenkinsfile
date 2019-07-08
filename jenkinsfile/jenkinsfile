@@ -1,5 +1,5 @@
 node{
-    stage('Preparation') 
+/*    stage('Preparation') 
    { 
       git 'https://github.com/ranjithanagaraj/Project-1.git'
    }
@@ -46,18 +46,21 @@ node{
 
     }
     
-    
-    stage("Container Prune"){
-        sh "docker stop spring-redis redis"
-	sh "docker container prune -f"
+    */
+   stage("Container Prune"){
+	    sh "docker container prune -f"
     }
     stage('docker image build')
     {
- sh "docker build -t spring-redis-image ."
- sh "docker run --name redis -d redis"
+         sh "docker build -t spring-redis-image ."
+         sh "docker run --name redis -d redis"
     echo "Image build complete"
-  sh "docker run -p 8086:8086 --name spring-redis --link redis -d spring-redis-image"
-   echo "container is up"
     }
+    stage('spin up containers')
+    {
+            	sh "docker run -p 8086:8086 --name spring-redis --link redis -d spring-redis-image"
+        	 echo "container is up"
+    }
+}
 
 }
