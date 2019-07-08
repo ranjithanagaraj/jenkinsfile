@@ -1,16 +1,17 @@
 node{
-/*    stage('Preparation') 
+    stage('Preparation') 
    { 
       git 'https://github.com/ranjithanagaraj/Project-1.git'
    }
+        stage('SonarQube analysis') 
+    { 
+         sh 'mvn sonar:sonar' 
+     }
       stage('Build')
    {
          sh 'mvn clean install -Dv=${BUILD_NUMBER}'
    }
-      stage('SonarQube analysis') 
-    { 
-         sh 'mvn sonar:sonar -Dsonar.host.url=http://tmwhd68639dns1.eastus2.cloudapp.azure.com' 
-     }
+ 
      stage('Artifactory upload')
      	{
 		
@@ -45,8 +46,6 @@ node{
 			server.download(downloadSpec)
 
     }
-    
-    */
    stage("Container Prune"){
 	    sh "docker container prune -f"
     }
