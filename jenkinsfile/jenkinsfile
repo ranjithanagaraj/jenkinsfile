@@ -1,5 +1,5 @@
 node{
-    stage('Preparation') 
+  /*  stage('Preparation') 
    { 
       git 'https://github.com/ranjithanagaraj/Project-1.git'
    }
@@ -45,7 +45,7 @@ node{
 			}"""
 			server.download(downloadSpec)
 
-    }
+    }*/
    stage("Container Prune"){
 	    sh "docker container prune -f"
     }
